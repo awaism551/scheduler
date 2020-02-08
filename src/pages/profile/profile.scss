@@ -1,0 +1,68 @@
+page-profile {
+	.input_label{
+	font-family: quicksandsR!important;
+	margin: 5px 0 0;
+	}
+	.input_item{
+	padding-left: 0;
+    font-size: 16px;
+	position: relative;
+	padding-right: 0;
+	}
+	.login_page_btn{
+	background: #73a82f;
+	text-transform: initial;
+	font-family: quicksandsR!important;
+	padding: 24px 0 24px 0;
+	-webkit-box-shadow: 0px 2px 6px 1px rgb(186,185,185);
+	-moz-box-shadow: 0px 2px 6px 1px rgb(186,185,185);
+	box-shadow: 0px 2px 6px 1px rgb(186,185,185);
+	margin-bottom: 17px;
+	border-radius: 0;
+	}
+	.item-md.item-block .item-inner {
+    padding-right: 0;
+	}
+	.pass_change_btn{
+	background: none;
+	color: #73a82f;
+	font-family: quicksandsR!important;
+	font-size: 14px;
+	border: 1px solid #e8e8e8;
+	padding: 22px 0px 22px 0px !important;
+	-webkit-box-shadow: 0px 4px 6px 2px rgba(241,241,241,1);
+	-moz-box-shadow: 0px 4px 6px 2px rgba(241,241,241,1);
+	box-shadow: 0px 4px 6px 2px rgba(241,241,241,1);
+	margin: 25px auto auto;
+	left: 0;
+	right: 0;
+	display: block;
+	width: 100%;
+	text-transform: initial;
+	font-size: 14px!important;
+	border-radius: 0;
+	}
+	.prfle_sve_btn{
+	background: #73a82f;
+	color: #ffffff;
+	font-family: quicksandsR!important;
+	font-size: 14px;
+	padding: 22px 0px 22px 0px !important;
+	-webkit-box-shadow: 0px 4px 6px 2px rgba(241,241,241,1);
+	-moz-box-shadow: 0px 4px 6px 2px rgba(241,241,241,1);
+	box-shadow: 0px 4px 6px 2px rgba(241,241,241,1);
+	margin: 15px auto auto;
+	left: 0;
+	right: 0;
+	display: block;
+	width: 100%;
+	text-transform: initial;
+	font-size: 14px!important;
+	border-radius: 0;
+	}
+	.input_label {
+	font-family: quicksandsR !important;
+	margin: 5px 0 0px 0px;
+	padding-left: 28px;
+	}
+}

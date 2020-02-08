@@ -1,0 +1,31 @@
+<!--
+  Generated template for the LoginhomePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar class="header_font" color="primary">
+		<ion-title>log In</ion-title>
+		<!-- <ion-buttons end>
+			<button ion-button icon-only (click)="presentPopover($event)">
+				<ion-icon name="more"></ion-icon>
+			</button>
+		</ion-buttons> -->
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+	<object style="max-width: 156px; width: 100%; margin: 30px auto 30px auto; left: 0; right: 0; display: block;" type="image/svg+xml" data="../../assets/imgs/logo.svg">
+		Your browser does not support SVG
+	</object>
+	<!-- <img style="max-width: 100%;" src="../../assets/imgs/logo.svg"/> -->
+	<!--<button ion-button block class="fb_btn s_btn"> <ion-icon class="s_media_icon fb_icon" ios="logo-facebook" md="logo-facebook"></ion-icon>Log In via Facebook</button>
+	<button ion-button block class="lnkdn_btn s_btn"><ion-icon class="s_media_icon" ios="logo-linkedin" md="logo-linkedin"></ion-icon>Log In via Linkedin</button>
+	-->
+	<button ion-button block class="eml_btn s_btn" (click)="gologin()">Log In via Email</button>
+	<ion-label class="create_acnt_lnk">Don't have an Account? <a class="accnt_creat" href="javascript:void(0)" (click)="goRegister()">Click Here</a></ion-label>
+</ion-content>
+<!--<ion-footer class="footer_section">
+	<p class="footer_content">Orga-nice 2019 all Rights Reserve</p>
+</ion-footer>-->

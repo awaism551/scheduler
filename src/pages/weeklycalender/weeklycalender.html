@@ -1,0 +1,88 @@
+<!--
+  Generated template for the WeeklycalenderPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+   <ion-navbar class="header_font" color="primary">
+	<ion-title>Weekly Calendar</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+<div #scheduler_here class="dhx_cal_container" style="width: 100%; height:100vh">
+   <div class="dhx_cal_navline">
+       <div class="dhx_cal_prev_button">&nbsp;</div>
+       <div class="dhx_cal_next_button">&nbsp;</div>
+       <div class="dhx_cal_today_button"></div>
+       <div class="dhx_cal_date"></div>
+       <div class="dhx_cal_tab" name="day_tab"></div>
+       <div class="dhx_cal_tab" name="week_tab"></div>
+       <div class="dhx_cal_tab" name="month_tab"></div>
+   </div>
+   <div class="dhx_cal_header"></div>
+   <div class="dhx_cal_data"></div>
+</div>
+<!--
+<ion-grid class="bellow_cal">
+<h5>Tasks</h5>
+  <ion-row>
+  
+    <ion-col>
+	
+	<h5>Daily</h5>
+      <div *ngFor="let item of allTasksDaily[0]; let i = index">
+				
+					<ion-col class="">
+						<div>
+						<div float-left class="my-checkbox">
+						  <ion-checkbox checked class="task_chkbx" name="receive_calls">
+						  </ion-checkbox>
+						  <ion-label chkbx_lbl text-uppercase>{{item.name}}</ion-label>
+						  
+						</div>
+					  </div>
+					</ion-col>
+				
+		</div>
+    </ion-col>
+    <ion-col>
+      <h5>Weekly</h5>
+      <div *ngFor="let item of allTasksWeekly[0]; let i = index">
+				
+					<ion-col class="tsk_chkbx_area">
+						<div>
+						<div float-left class="my-checkbox">
+						  <ion-checkbox checked class="task_chkbx" name="receive_calls">
+						  </ion-checkbox>
+						  <ion-label chkbx_lbl text-uppercase>{{item.name}}</ion-label>
+						  
+						</div>
+					  </div>
+					</ion-col>
+				
+		</div>
+    </ion-col>
+    <ion-col>
+      <h5>Monthly</h5>
+      <div *ngFor="let item of allTasksMonthly[0]; let i = index">
+				
+					<ion-col class="tsk_chkbx_area">
+						<div>
+						<div float-left class="my-checkbox">
+						  <ion-checkbox checked class="task_chkbx" name="receive_calls">
+						  </ion-checkbox>
+						  <ion-label chkbx_lbl text-uppercase>{{item.name}}</ion-label>
+						  
+						</div>
+					  </div>
+					</ion-col>
+				
+		</div>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+        -->
+		
+</ion-content>

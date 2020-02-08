@@ -1,0 +1,86 @@
+<!--
+  Generated template for the QuicknotesPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar class="header_font" color="primary">
+		<ion-title>Sticky Notes</ion-title>
+		<!-- <ion-buttons end>
+			<button ion-button icon-only (click)="presentPopover($event)">
+				<ion-icon name="more"></ion-icon>
+			</button>
+		</ion-buttons> -->
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div class="quicknotes_body">
+		<ion-grid class="notes_list">
+			<ion-row>
+				<div class="notes_ctgry">
+					<p class="notes_hedng">Notes</p>
+				</div>
+			</ion-row>
+			<!-- <ion-list>
+				<ion-item-sliding *ngFor="let note of allNotes[0]">
+					<ion-item><p class="notes_text">{{note.notes}}</p></ion-item>
+					<ion-item-options side="right">
+						<button color="danger" value="let id={{note.id}}" ion-button (click)="deleteNote(id)">
+							<ion-icon name="trash"></ion-icon>
+						</button>
+					</ion-item-options>
+				</ion-item-sliding>
+			</ion-list>
+		</ion-grid>
+	</div> -->
+			
+			<div *ngIf="allNotes[0] && allNotes[0].length >0">
+			
+			  <ion-row *ngFor="let note of allNotes[0]">
+				<ion-col class="quicknotes_area" col-12>
+				  
+					<div *ngIf="allNotes[0].length > 0">
+						<p class="notes_text">{{note.notes}}</p>
+						<button class="trsh_btn" (click)="editNote(note.id,'note.notes')"><ion-icon name="create"></ion-icon></button>
+						<button class="trsh_btn" (click)="deleteNote(note.id)"><ion-icon name="trash"></ion-icon></button>
+					</div>
+				</ion-col>
+			</ion-row>
+			
+			</div>
+
+			<!--<div *ngIf="allNotes[0] == undefined || allNotes[0].length == 0"><p class="notes_text">
+			<ion-row>
+				<ion-col class="quicknotes_area" col-12><p>No result found.</p>
+				</ion-col>
+			</ion-row>
+			</div>-->
+			<!-- <ion-row>
+				<ion-col class="quicknotes_area" col-12>
+					<div>
+						<p class="notes_text">Lorem Ipsum is simply dummy text</p>
+					</div>
+				</ion-col>
+			</ion-row>
+			<ion-row>
+				<ion-col class="quicknotes_area" col-12>
+					<div>
+						<p class="notes_text">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece.</p>
+					</div>
+				</ion-col>
+      </ion-row>
+      <ion-row>
+				<ion-col class="quicknotes_area" col-12>
+					<div>
+						<p class="notes_text">Lorem Ipsum is simply dummy text</p>
+					</div>
+				</ion-col>
+			</ion-row>  -->
+    </ion-grid> 
+  </div>
+  </ion-content>
+  <div class="add_btn_sec">
+      <button ion-button class="add_btn" (click)="gowritenotes()"><ion-icon ios="ios-add" md="md-add" class="plus_icon"></ion-icon></button>
+  </div>

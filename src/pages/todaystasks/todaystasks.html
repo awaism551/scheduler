@@ -1,0 +1,314 @@
+<!--
+  Generated template for the TasksPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+	<ion-navbar class="header_font" color="primary">
+		<ion-title>Today's Tasks</ion-title>
+		<!-- <ion-buttons end>
+			<button ion-button icon-only (click)="presentPopover($event)">
+				<ion-icon name="more"></ion-icon>
+			</button>
+		</ion-buttons> -->
+	</ion-navbar>
+</ion-header>
+<ion-content padding>
+	<ion-grid>
+		<ion-row>
+			<ion-col col-6>
+				<button ion-button secondary class="header_btn" (click)="gocategories()">
+					<ion-icon style="margin-right: 5px;" ios="ios-add" md="md-add" class="plus_icon"></ion-icon>
+					Categories
+				</button>
+			</ion-col>
+			<ion-col col-6>
+				<button ion-button secondary class="header_btn" (click)="gonewtask()">
+					<ion-icon style="margin-right: 5px;" ios="ios-add" md="md-add" class="plus_icon"></ion-icon>New Task
+				</button>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+	<form>
+		<ion-grid class="task_list">
+			<ion-row>
+				<div class="tsk_ctgry">
+					<p class="tsk_ctgry_hedng">Daily</p>
+				</div>
+			</ion-row>
+
+			<div class="tab" *ngFor="let item of allTasksDaily[0]; let i = index">
+				<div class="tab">
+					<input type="checkbox" id="chckd{{i}}">
+					<label class="tab-label" for="chckd{{i}}">{{item.name}}</label>
+					<div class="tab-content">
+						<ion-list style="width: 100%;">
+							<ion-row>
+								<ion-col size="6" class="title">Task Name:</ion-col>
+								<ion-col size="6" class="content"> {{item.name}}</ion-col>
+							</ion-row>
+							<ion-row>
+								<ion-col size="6" class="title">Due date:</ion-col>
+								<ion-col size="6" class="content"> {{item.due_date}}</ion-col>
+							</ion-row>
+							<ion-row>
+								<ion-col size="6" class="title">Duration:</ion-col>
+								<ion-col size="6" class="content"> {{item.duration}}</ion-col>
+							</ion-row>
+							<ion-row>
+								<ion-col size="6" class="title">Bring with You:</ion-col>
+								<ion-col size="6" class="content"> {{item.bring_with_you}}</ion-col>
+							</ion-row>
+
+
+							<ion-row>
+								<ion-col size="6" class="title">Frequency:</ion-col>
+								<ion-col size="6" class="content"> {{item.frequency}}</ion-col>
+							</ion-row>
+							<ion-row>
+								<ion-col size="6" class="title">Priority:</ion-col>
+								<ion-col size="6" class="content"> {{item.priority}}</ion-col>
+							</ion-row>
+							<ion-row>
+								<ion-col size="6" class="title">Category:</ion-col>
+								<ion-col size="6" class="content"> {{item.category}}</ion-col>
+							</ion-row>
+							<ion-row>
+								<ion-col size="6" class="title">Color:</ion-col>
+								<ion-col size="6" class="content"> {{item.color}}</ion-col>
+							</ion-row>
+							<ion-row>
+								<ion-col size="6" class="title">Sub Tasks:</ion-col>
+								<ion-col size="6" class="content"> {{item.sub_tasks}}</ion-col>
+							</ion-row>
+							<ion-row>
+								<ion-col size="6" class="title">If not Completed:</ion-col>
+								<ion-col size="6" class="content"> {{item.if_not_completed}}</ion-col>
+							</ion-row>
+
+
+							<button ion-button block (click)="completetask(item.id)"
+								class="save_btn save_btn_complete">Complete</button>
+							<button ion-button block (click)="edittask(item.id)"
+								class="save_btn save_btn_edit">Edit</button>
+							<button ion-button block (click)="deletetask(item.id)"
+								class="save_btn save_btn_delete">Delete</button>
+						</ion-list>
+					</div>
+				</div>
+			</div>
+
+		</ion-grid>
+		<ion-grid class="task_list">
+			<ion-row>
+				<div class="tsk_ctgry">
+					<p class="tsk_ctgry_hedng">Weekly</p>
+				</div>
+			</ion-row>
+
+			<div class="tab" *ngFor="let item of allTasksWeekly[0]; let i = index">
+				<div class="tab">
+					<input type="checkbox" id="chckw{{i}}">
+					<label class="tab-label" for="chckw{{i}}">{{item.name}}</label>
+					<div class="tab-content">
+						<ion-list style="width: 100%;">
+							<ion-row>
+								<ion-col size="6" class="title">Task Name:</ion-col>
+								<ion-col size="6" class="content"> {{item.name}}</ion-col>
+							</ion-row>
+							<ion-row>
+								<ion-col size="6" class="title">Due date:</ion-col>
+								<ion-col size="6" class="content"> {{item.due_date}}</ion-col>
+							</ion-row>
+							<ion-row>
+								<ion-col size="6" class="title">Duration:</ion-col>
+								<ion-col size="6" class="content"> {{item.duration}}</ion-col>
+							</ion-row>
+							<ion-row>
+								<ion-col size="6" class="title">Bring with You:</ion-col>
+								<ion-col size="6" class="content"> {{item.bring_with_you}}</ion-col>
+							</ion-row>
+
+
+							<ion-row>
+								<ion-col size="6" class="title">Frequency:</ion-col>
+								<ion-col size="6" class="content"> {{item.frequency}}</ion-col>
+							</ion-row>
+							<ion-row>
+								<ion-col size="6" class="title">Priority:</ion-col>
+								<ion-col size="6" class="content"> {{item.priority}}</ion-col>
+							</ion-row>
+							<ion-row>
+								<ion-col size="6" class="title">Category:</ion-col>
+								<ion-col size="6" class="content"> {{item.category}}</ion-col>
+							</ion-row>
+							<ion-row>
+								<ion-col size="6" class="title">Color:</ion-col>
+								<ion-col size="6" class="content"> {{item.color}}</ion-col>
+							</ion-row>
+							<ion-row>
+								<ion-col size="6" class="title">Sub Tasks:</ion-col>
+								<ion-col size="6" class="content"> {{item.sub_tasks}}</ion-col>
+							</ion-row>
+							<ion-row>
+								<ion-col size="6" class="title">If not Completed:</ion-col>
+								<ion-col size="6" class="content"> {{item.if_not_completed}}</ion-col>
+							</ion-row>
+
+
+							<button ion-button block (click)="completetask(item.id)"
+								class="save_btn save_btn_complete">Complete</button>
+							<button ion-button block (click)="edittask(item.id)"
+								class="save_btn save_btn_edit">Edit</button>
+							<button ion-button block (click)="deletetask(item.id)"
+								class="save_btn save_btn_delete">Delete</button>
+						</ion-list>
+					</div>
+				</div>
+			</div>
+
+
+		</ion-grid>
+		<ion-grid class="task_list">
+			<ion-row>
+				<div class="tsk_ctgry">
+					<p class="tsk_ctgry_hedng">Monthly</p>
+				</div>
+			</ion-row>
+			<div class="tab" *ngFor="let item of allTasksMonthly[0]; let i = index">
+				<div class="tab">
+					<input type="checkbox" id="chckm{{i}}">
+					<label class="tab-label" for="chckm{{i}}">{{item.name}}</label>
+					<div class="tab-content">
+						<ion-list style="width: 100%;">
+							<ion-row>
+								<ion-col size="6" class="title">Task Name:</ion-col>
+								<ion-col size="6" class="content"> {{item.name}}</ion-col>
+							</ion-row>
+							<ion-row>
+								<ion-col size="6" class="title">Due date:</ion-col>
+								<ion-col size="6" class="content"> {{item.due_date}}</ion-col>
+							</ion-row>
+							<ion-row>
+								<ion-col size="6" class="title">Duration:</ion-col>
+								<ion-col size="6" class="content"> {{item.duration}}</ion-col>
+							</ion-row>
+							<ion-row>
+								<ion-col size="6" class="title">Bring with You:</ion-col>
+								<ion-col size="6" class="content"> {{item.bring_with_you}}</ion-col>
+							</ion-row>
+
+
+							<ion-row>
+								<ion-col size="6" class="title">Frequency:</ion-col>
+								<ion-col size="6" class="content"> {{item.frequency}}</ion-col>
+							</ion-row>
+							<ion-row>
+								<ion-col size="6" class="title">Priority:</ion-col>
+								<ion-col size="6" class="content"> {{item.priority}}</ion-col>
+							</ion-row>
+							<ion-row>
+								<ion-col size="6" class="title">Category:</ion-col>
+								<ion-col size="6" class="content"> {{item.category}}</ion-col>
+							</ion-row>
+							<ion-row>
+								<ion-col size="6" class="title">Color:</ion-col>
+								<ion-col size="6" class="content"> {{item.color}}</ion-col>
+							</ion-row>
+							<ion-row>
+								<ion-col size="6" class="title">Sub Tasks:</ion-col>
+								<ion-col size="6" class="content"> {{item.sub_tasks}}</ion-col>
+							</ion-row>
+							<ion-row>
+								<ion-col size="6" class="title">If not Completed:</ion-col>
+								<ion-col size="6" class="content"> {{item.if_not_completed}}</ion-col>
+							</ion-row>
+
+
+							<button ion-button block (click)="completetask(item.id)"
+								class="save_btn save_btn_complete">Complete</button>
+							<button ion-button block (click)="edittask(item.id)"
+								class="save_btn save_btn_edit">Edit</button>
+							<button ion-button block (click)="deletetask(item.id)"
+								class="save_btn save_btn_delete">Delete</button>
+						</ion-list>
+					</div>
+				</div>
+			</div>
+
+		</ion-grid>
+		<ion-grid class="task_list">
+			<ion-row>
+				<div class="tsk_ctgry">
+					<p class="tsk_ctgry_hedng">Once</p>
+				</div>
+			</ion-row>
+
+			<div class="tab" *ngFor="let item of allTasksUnassign[0]; let i = index">
+				<div class="tab">
+					<input type="checkbox" id="chcko{{i}}">
+					<label class="tab-label" for="chcko{{i}}">{{item.name}}</label>
+					<div class="tab-content">
+						<ion-list style="width: 100%;">
+							<ion-row>
+								<ion-col size="6" class="title">Task Name:</ion-col>
+								<ion-col size="6" class="content"> {{item.name}}</ion-col>
+							</ion-row>
+							<ion-row>
+								<ion-col size="6" class="title">Due date:</ion-col>
+								<ion-col size="6" class="content"> {{item.due_date}}</ion-col>
+							</ion-row>
+							<ion-row>
+								<ion-col size="6" class="title">Duration:</ion-col>
+								<ion-col size="6" class="content"> {{item.duration}}</ion-col>
+							</ion-row>
+							<ion-row>
+								<ion-col size="6" class="title">Bring with You:</ion-col>
+								<ion-col size="6" class="content"> {{item.bring_with_you}}</ion-col>
+							</ion-row>
+
+
+							<ion-row>
+								<ion-col size="6" class="title">Frequency:</ion-col>
+								<ion-col size="6" class="content"> {{item.frequency}}</ion-col>
+							</ion-row>
+							<ion-row>
+								<ion-col size="6" class="title">Priority:</ion-col>
+								<ion-col size="6" class="content"> {{item.priority}}</ion-col>
+							</ion-row>
+							<ion-row>
+								<ion-col size="6" class="title">Category:</ion-col>
+								<ion-col size="6" class="content"> {{item.category}}</ion-col>
+							</ion-row>
+							<ion-row>
+								<ion-col size="6" class="title">Color:</ion-col>
+								<ion-col size="6" class="content"> {{item.color}}</ion-col>
+							</ion-row>
+							<ion-row>
+								<ion-col size="6" class="title">Sub Tasks:</ion-col>
+								<ion-col size="6" class="content"> {{item.sub_tasks}}</ion-col>
+							</ion-row>
+							<ion-row>
+								<ion-col size="6" class="title">If not Completed:</ion-col>
+								<ion-col size="6" class="content"> {{item.if_not_completed}}</ion-col>
+							</ion-row>
+
+
+							<button ion-button block (click)="completetask(item.id)"
+								class="save_btn save_btn_complete">Complete</button>
+							<button ion-button block (click)="edittask(item.id)"
+								class="save_btn save_btn_edit">Edit</button>
+							<button ion-button block (click)="deletetask(item.id)"
+								class="save_btn save_btn_delete">Delete</button>
+						</ion-list>
+					</div>
+				</div>
+			</div>
+
+		</ion-grid>
+	</form>
+</ion-content>
+<!-- <ion-footer class="footer_section">
+    <p class="footer_content">Orga-nice 2019 all Rights Reserve</p>
+</ion-footer> -->

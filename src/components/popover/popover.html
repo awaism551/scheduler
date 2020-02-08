@@ -1,0 +1,6 @@
+<!-- Generated template for the PopoverComponent component -->
+<ion-list>
+  <button class="side-menu-font" style="color:#444444;" ion-item *ngFor="let menu of menus" (click)="goTopage(menu,menu.title)">
+    <ion-icon name="{{menu.icon}}" color="buttoncolor"></ion-icon>&nbsp;&nbsp;{{menu.title}}
+  </button>
+</ion-list>

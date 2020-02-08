@@ -1,0 +1,26 @@
+page-calendar {
+	.opt_btn{
+	background: #f7f7f7;
+	text-transform: initial;
+	font-family: quicksandsR!important;
+	padding: 25px 0 25px 0;
+	box-shadow: none;
+	border-radius: 0;
+	border: 1px solid #e7e7e7;
+	color:#393939;
+	margin: 18px 0 0; 
+	}
+	.my-checkbox {
+    display: flex;
+    align-items: center;
+	}
+	.checkbox-md .checkbox-icon {
+    border-radius: 0;
+	}
+	.label-md {
+    margin: 4px 10px 4px 10px;
+	font-family: quicksandsR !important;
+	color: #444444;
+	text-transform: initial!important;
+	}
+}

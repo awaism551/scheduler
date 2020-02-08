@@ -1,0 +1,94 @@
+page-categories {
+    .my-checkbox {
+    display: flex;
+	align-items: center;
+	width: 100%;
+	}
+	.checkbox-md .checkbox-icon {
+    border-radius: 0;
+	margin-left: 5px;
+	}
+	.label-md {
+    margin: 8px 10px 8px 10px;
+	font-family: quicksandsR !important;
+	color: #444444;
+	text-transform: initial!important;
+	}
+	.tsk_ctgry{
+	background: #f7f7f7;
+	width: 100%;
+	border: 1px solid #e7e7e7;
+	}
+	.tsk_ctgry_hedng{
+	font-family: 'quicksandsB';
+	font-size: 15px;
+	color: #626262;
+	margin: 0 0 0 5px;
+	padding: 12px 0px 12px 0px;
+	}
+	.tsk_chkbx_area {
+    border-bottom: 1px solid #ebebeb;
+	padding: 8px 0 8px 0;
+	}
+	.task_list{
+	margin-top: 12px;
+	}
+	.input_label{
+	font-family: quicksandsR!important;
+	margin: 5px 0 0px 0px;
+	padding-left: 28px;
+	}
+	.input_item{
+	padding-left: 0;
+    font-size: 16px;
+	position: relative;
+	padding-right: 0;
+	}
+	.item-md.item-block .item-inner {
+    padding-right: 0;
+	}
+	.login_btn{
+		background: none;
+		color: #73a82f;
+		font-family: quicksandsR!important;
+		font-size: 14px;
+		border: 1px solid #e8e8e8;
+		padding: 2px 50px 2px 50px !important;
+		border-radius: 20px;
+		-webkit-box-shadow: 0px 4px 6px 2px rgba(241,241,241,1);
+		-moz-box-shadow: 0px 4px 6px 2px rgba(241,241,241,1);
+		box-shadow: 0px 4px 6px 2px rgba(241,241,241,1);
+		float: left;
+		text-transform: initial;
+		margin: 15px 0 0;
+	}
+	//add button
+	.add_btn{
+		height: 42px;
+		width: 42px;
+		border-radius: 50%;
+		-webkit-box-shadow: 0px 3px 7px 1px rgb(186,185,185);
+		-moz-box-shadow: 0px 3px 7px 1px rgb(186,185,185);
+        box-shadow: 0px 3px 7px 1px rgb(186,185,185);
+        display: block;
+        margin: auto;
+	}
+	.plus_icon{
+		font-size: 22px;
+		color: #ffffff;
+    }
+    .add_btn_sec{
+        position: fixed;
+        bottom: 14px;
+		margin: auto;
+		left: 0;
+        right: 0;
+        display: block;
+        z-index: 99;
+	}
+	.trsh_btn{
+        background: none;
+        color: #c5c4c4;
+        float: right;
+    }
+}

@@ -1,0 +1,57 @@
+<!--
+  Generated template for the DashboardPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+	<ion-navbar class="header_font" color="primary">
+		<ion-title>Dashboard</ion-title>
+		<!-- <ion-buttons end>
+			<button ion-button icon-only (click)="presentPopover($event)">
+				<ion-icon name="more"></ion-icon>
+			</button>
+		</ion-buttons> -->
+	</ion-navbar>
+	<ion-list style="margin: 0;"  *ngFor="let note of userdetails">
+		<ion-item class="dshbrd_user_detail">
+			<ion-avatar class="user_phto_sec" item-start>
+				<img style="width: 40px; height: 40px; border-radius: 50%;" src="../../assets/imgs/dash_profile_picture.png">
+			</ion-avatar>
+			<h2 class="user_dshbrd_nme">{{note.name}}</h2>
+			<p class="user_dshbrd_cntry">{{note.country}}</p>
+		</ion-item>
+	</ion-list>
+</ion-header>
+<ion-content padding>
+<ion-row class="progress" *ngFor="let note of dashboard">
+	<circle-progress
+	[percent]="note.percent"
+	[radius]="80"
+	[outerStrokeWidth]="14"
+	[innerStrokeWidth]="8"
+	[outerStrokeColor]="'#73a82f'"
+	[innerStrokeColor]="'#e9e9e9'"
+	[animation]="false"
+  ></circle-progress>
+  </ion-row>
+	  <p class="perentage_text">Percentage completed(Monthly)</p> 
+	  <div class="counting_sec">
+		<ion-grid class="no_padding">
+			<ion-row *ngFor="let note of dashboard">
+				<ion-col class="border_right" col-6>
+					<h3 class="nmbr">{{note.completed}}</h3>
+					<p class="para">Completed tasks</p>
+				</ion-col>
+				<ion-col col-6>
+					<h3 class="nmbr">{{note.notcompleted}}</h3>
+					<!--<p class="para">Medals collected</p>-->
+					<p class="para">Pending tasks</p>
+				</ion-col>
+			</ion-row>
+		</ion-grid>	
+	</div> 
+</ion-content>
+<!--<ion-footer class="footer_section">
+	<p class="footer_content">Orga-nice 2019 all Rights Reserve</p>
+</ion-footer>-->

@@ -1,0 +1,7 @@
+{
+  "name": "Ogra-Nice",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
