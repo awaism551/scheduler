@@ -27,6 +27,7 @@ declare let scheduler: any;
 export class WeeklycalenderPage implements OnInit {
 
 	public UserDetails = Array();
+	public loading;
 	allTasks = Array();
 	// allTasks = Array();
 	allTasksDaily = Array();
@@ -38,6 +39,7 @@ export class WeeklycalenderPage implements OnInit {
 
 	@ViewChild("scheduler_here") schedulerContainer: ElementRef;
 	constructor(public loadingCtrl: LoadingController, public global: GlobalProvider, public navCtrl: NavController, public navParams: NavParams, public popoverCtrl: PopoverController, private storage: Storage, public http: Http, private toastCtrl: ToastController) {
+		debugger;
 		this.urlGet = global.url;
 	}
 
@@ -54,7 +56,6 @@ export class WeeklycalenderPage implements OnInit {
 	ionViewDidEnter() {
 		console.log('ionViewDidLoad TasksPage');
 		this.get_user_tasks();
-
 	}
 
 	//popover cntrl
@@ -65,16 +66,37 @@ export class WeeklycalenderPage implements OnInit {
 			ev: myEvent
 		});
 	}
+
 	ngOnInit() {
 	}
+
+	showLoading() {
+		if (!this.loading) {
+			this.loading = this.loadingCtrl.create({
+				content: 'Please Wait...'
+			});
+			this.loading.present();
+		}
+	}
+
+	dismissLoading() {
+		if (this.loading) {
+			this.loading.dismiss();
+			this.loading = null;
+		}
+	}
+
 	get_user_tasks() {
 
 		debugger;
-		let loading = this.loadingCtrl.create({
-			content: 'Please wait...'
-		});
+		// this.loading = this.loadingCtrl.create({
+		// 	content: 'Please wait...'
+		// });
 
-		loading.present();
+		// this.loading.present();
+
+		this.showLoading();
+
 		scheduler.clearAll();
 
 		scheduler.config.xml_date = '%Y-%m-%d %H:%i';
@@ -84,16 +106,21 @@ export class WeeklycalenderPage implements OnInit {
 		//test code
 		// scheduler.xy.min_event_height = 100; // didn't work :(
 
-		// scheduler.config.touch_drag = 750;
-		// scheduler.config.touch = "force";
+		scheduler.config.touch_drag = 750;
+		scheduler.config.touch = "force";
 		scheduler.init(this.schedulerContainer.nativeElement, new Date(), "week");
 
+		//test
+		// this.loading.dismiss();
 
 		//scheduler.init(this.schedulerContainer.nativeElement, new Date(2017, 8, 1),"week");
 		/*  scheduler.attachEvent("onEmptyClick", function (id, e){ 
-	  alert("Disabled!"); 
-	  return false;
-	  }); */
+			alert("Disabled!"); 
+			return false;
+		}); */
+
+
+		// test
 		scheduler.attachEvent('onEventAdded', (id, ev) => {
 			/* this.eventService.insert(this.serializeEvent(ev, true))
 				.then((response) => {
@@ -201,12 +228,11 @@ export class WeeklycalenderPage implements OnInit {
 		//test code
 		// loading.dismiss();
 
+		//test
 		let _url: string = this.urlGet + "api/v1/user/get_user_task_calender";
 		let postdata = {
 			'user_id': this.UserDetails['userdetails'].id
 		}
-
-
 
 		this.http.post(_url, postdata, { headers: this.headers })
 			.subscribe(
@@ -220,24 +246,31 @@ export class WeeklycalenderPage implements OnInit {
 
 					console.log(this.allTasks[0]);
 					scheduler.parse(this.allTasks[0], "json");
-					loading.dismiss();
+					this.dismissLoading();
+					// this.loading.dismiss();
 
+				}, err => {
+					this.dismissLoading();
+					// this.loading.dismiss();
 				});
 
-		//console.log(this.dataset().events);
-		//scheduler.parse(this.dataset().events, "json");
+		// console.log(this.dataset().events);
+		// scheduler.parse(this.dataset().events, "json");
+		// test
+
 		this.get_user_unassigntasks();
 
 	}
+
 	get_user_unassigntasks() {
 
 		debugger;
 		console.log(this.urlGet);
 		/*  let loading = this.loadingCtrl.create({
-				  content: 'Please wait...'
-				});
-  
-		   loading.present(); */
+				content: 'Please wait...'
+			});
+
+		loading.present(); */
 
 		let _url: string = this.urlGet + "api/v1/user/get_user_task_unassign";
 		let postdata = {
@@ -255,11 +288,16 @@ export class WeeklycalenderPage implements OnInit {
 					this.allTasksMonthly.push(taskList.all_tasks.monthly);
 					this.allTasksUnassign.push(taskList.all_tasks.unassigned);
 					console.log(this.allTasksWeekly);
-					//loading.dismiss();
+					this.dismissLoading();
+					// this.loading.dismiss();
 
+				}, (err) => {
+					this.dismissLoading();
+					// this.loading.dismiss();
+					console.log(err);
 				});
-
 	}
+
 	// private dataset()
 	// {
 	// 	const events = [
@@ -282,6 +320,7 @@ export class WeeklycalenderPage implements OnInit {
 		data = data + ' ' + hours + ':' + min
 		return data;
 	}
+
 	/* private serializeEvent(data: any, insert: boolean = false): Event {
 		  const result = {};
   
@@ -300,4 +339,5 @@ export class WeeklycalenderPage implements OnInit {
 		  }
 		  return result as Event;
 	  } */
+
 }

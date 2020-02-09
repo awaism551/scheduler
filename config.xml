@@ -112,5 +112,4 @@
     <plugin name="cordova-plugin-network-information" spec="^2.0.2" />
     <plugin name="cordova-sqlite-storage" spec="^3.4.1" />
     <allow-navigation href="http://localhost:8101" sessionid="18f105ef" />
-    <allow-navigation href="http://localhost:8102" sessionid="0c890702" />
 </widget>

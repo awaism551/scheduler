@@ -169,7 +169,8 @@ export class MyApp {
 				this.UserDetails = val;
 				this.splashScreen.hide();
 			});
-			this.initializeFirebase();
+
+			// this.initializeFirebase();
 			// 
 			//this.pushSetup();
 			// }
