@@ -10,7 +10,7 @@
 		"build": "ionic-app-scripts build",
 		"lint": "ionic-app-scripts lint",
 		"android": "sudo ionic cordova run android",
-		"android-l": "sudo ionic cordova run android --livereload"
+		"android-emulate-l": "sudo ionic cordova emulate android -l"
 	},
 	"dependencies": {
 		"@angular/animations": "5.2.11",

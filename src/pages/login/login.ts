@@ -217,13 +217,12 @@ export class LoginPage {
 														//this.navCtrl.setRoot(ProfilePage);
 
 													}
-
-
 												});
 
 											});
 										});
-									} else {
+									}
+									else {
 										// fake login for browser, bcz on browser apis are working fine but otp not receiving on mail
 										this.fakeLogin();
 									}
@@ -232,10 +231,12 @@ export class LoginPage {
 								toast.present();
 							});
 						}
-					}, (err) => {
+					}
+					, (err) => {
 						// fake login for android, bcz for now api is not working for android
 						this.fakeLogin();
-					});
+					}
+				);
 		}
 	}
 
