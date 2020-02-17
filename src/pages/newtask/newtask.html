@@ -1,62 +1,60 @@
-<!--
-  Generated template for the NewtaskPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-  <ion-navbar class="header_font" color="primary">
+	<ion-navbar class="header_font" color="primary">
 		<ion-title>New Task</ion-title>
-		<!-- <ion-buttons end>
-			<button ion-button icon-only (click)="presentPopover($event)">
-				<ion-icon name="more"></ion-icon>
-			</button>
-		</ion-buttons> -->
-  </ion-navbar>
+	</ion-navbar>
 </ion-header>
 
 <ion-content padding>
 	<form novalidate (ngSubmit)="addTask()" [formGroup]="newTaskform">
 		<ion-list style="width: 100%;">
-			<ion-item class="input_item">			
-				<ion-label class="input_label" color="inputcolor" floating><img style="max-width: 19px; position: absolute; left: 0;" src="../../assets/imgs/inputtask.svg"/>Task Name</ion-label>
+			<ion-item class="input_item">
+				<ion-label class="input_label" color="inputcolor" floating><img
+						style="max-width: 19px; position: absolute; left: 0;"
+						src="../../assets/imgs/inputtask.svg" />Task Name</ion-label>
 				<ion-input type="text" [(ngModel)]="taskdata.task_name" formControlName="task_name"
-          [class.error1]="!newTaskform.controls.task_name.valid && newTaskform.controls.task_name.dirty"></ion-input>
+					[class.error1]="!newTaskform.controls.task_name.valid && newTaskform.controls.task_name.dirty">
+				</ion-input>
 			</ion-item>
+			<ion-item no-lines
+				*ngIf="( newTaskform.get('task_name').hasError('minlength') || newTaskform.get('task_name').hasError('maxlength')  ||newTaskform.get('task_name').hasError('required') ) && newTaskform.get('task_name').touched">
+				<div class="error"
+					*ngIf="newTaskform.get('task_name').hasError('required') && newTaskform.get('task_name').touched">
+					Please enter your task name!
+				</div>
+				<div class="error"
+					*ngIf="newTaskform.get('task_name').hasError('minlength') && newTaskform.get('task_name').touched">
+					Minimum 4 characters
+				</div>
+				<div class="error"
+					*ngIf="newTaskform.get('task_name').hasError('maxlength') && newTaskform.get('task_name').touched">
+					Maximum 12 characters
+				</div>
+			</ion-item>
+			<ion-item class="input_item">
+				<ion-label class="input_label" color="inputcolor" floating><img
+						style="max-width: 18px; position: absolute; left: 0;"
+						src="../../assets/imgs/inputclock.svg" />Duration</ion-label>
+				<ion-datetime class="input_form" displayFormat="H:mm" [(ngModel)]="taskdata.duration"
+					formControlName="duration"
+					[class.error1]="!newTaskform.controls.duration.valid && newTaskform.controls.duration.dirty">
+				</ion-datetime>
 
-						<ion-item no-lines
-							*ngIf="( newTaskform.get('task_name').hasError('minlength') || newTaskform.get('task_name').hasError('maxlength')  ||newTaskform.get('task_name').hasError('required') ) && newTaskform.get('task_name').touched">
-							<div class="error" *ngIf="newTaskform.get('task_name').hasError('required') && newTaskform.get('task_name').touched">
-								Please enter your task name!
-							</div>
-							<div class="error" *ngIf="newTaskform.get('task_name').hasError('minlength') && newTaskform.get('task_name').touched">
-								Minimum 4 characters
-							</div>
-							<div class="error" *ngIf="newTaskform.get('task_name').hasError('maxlength') && newTaskform.get('task_name').touched">
-								Maximum 12 characters
-							</div>
-						</ion-item>
-
-			<!--<ion-item class="input_item">			
-				<ion-label class="input_label" color="inputcolor" floating><img style="max-width: 18px; position: absolute; left: 0;" src="../../assets/imgs/inputclock.svg"/>Duration</ion-label>
-				<ion-input type="number"  min="0" max="24" class="input_form" [(ngModel)]="taskdata.duration" formControlName="duration"
-          [class.error1]="!newTaskform.controls.duration.valid && newTaskform.controls.duration.dirty"></ion-input>
-			</ion-item>-->
-			<ion-item class="input_item">			
-				<ion-label class="input_label" color="inputcolor" floating><img style="max-width: 18px; position: absolute; left: 0;" src="../../assets/imgs/inputclock.svg"/>Duration</ion-label>
-				<ion-datetime class="input_form" displayFormat="H:mm"  [(ngModel)]="taskdata.duration" formControlName="duration" [class.error1]="!newTaskform.controls.duration.valid && newTaskform.controls.duration.dirty"></ion-datetime>
-			
 			</ion-item>
 			<ion-item no-lines
 				*ngIf="( newTaskform.get('task_name').hasError('required') ) && newTaskform.get('task_name').touched">
-				<div class="error" *ngIf="newTaskform.get('duration').hasError('required') && newTaskform.get('duration').touched">
+				<div class="error"
+					*ngIf="newTaskform.get('duration').hasError('required') && newTaskform.get('duration').touched">
 					Please enter your task duration!
 				</div>
 			</ion-item>
-			<ion-item class="input_item">			
-				<ion-label class="input_label" color="inputcolor" floating><img style="max-width: 20px; position: absolute; left: 0;" src="../../assets/imgs/inputuser.svg"/>Bring with You</ion-label>
-				<ion-input class="input_form" type="text" [(ngModel)]="taskdata.bring_with_you" formControlName="bring_with_you"
-          [class.error1]="!newTaskform.controls.bring_with_you.valid && newTaskform.controls.bring_with_you.dirty"></ion-input>
+			<ion-item class="input_item">
+				<ion-label class="input_label" color="inputcolor" floating><img
+						style="max-width: 20px; position: absolute; left: 0;"
+						src="../../assets/imgs/inputuser.svg" />Bring with You</ion-label>
+				<ion-input class="input_form" type="text" [(ngModel)]="taskdata.bring_with_you"
+					formControlName="bring_with_you"
+					[class.error1]="!newTaskform.controls.bring_with_you.valid && newTaskform.controls.bring_with_you.dirty">
+				</ion-input>
 			</ion-item>
 			<ion-item class="input_item task_select_opt">
 				<ion-label style="font-family: quicksandsR!important; color: #636363;">Frequency</ion-label>
@@ -87,53 +85,50 @@
 			<ion-item class="input_item task_select_opt">
 				<ion-label style="font-family: quicksandsR!important; color: #636363;">Category</ion-label>
 				<ion-select class="task_slct_optn" [(ngModel)]="taskdata.category" formControlName="category">
-					<!--<ion-option value="home">Home</ion-option>
-					<ion-option value="office">Office</ion-option>-->
+
 					<div *ngFor="let cat of allCats[0]">
-					<ion-option value="{{cat.category_name}}">{{cat.category_name}}</ion-option>
+						<ion-option value="{{cat.category_name}}">{{cat.category_name}}</ion-option>
 					</div>
 				</ion-select>
 			</ion-item>
 			<ion-item class="input_item task_select_opt">
 				<ion-label style="font-family: quicksandsR!important; color: #636363;">Color</ion-label>
 				<ion-select class="task_slct_optn" [(ngModel)]="taskdata.color" formControlName="color">
-					<!---<ion-option class="y_color" value="yellow">Yellow</ion-option>-->
 					<ion-option value="green">Green</ion-option>
 					<ion-option value="black">Black</ion-option>
 					<ion-option value="blue">Blue</ion-option>
 					<ion-option value="red">Red</ion-option>
 				</ion-select>
 			</ion-item>
-			<!--<ion-item style="margin: 7px 0 7px;" class="input_item">
-				<ion-label style="font-family: quicksandsR!important; color: #636363;">Due Date</ion-label>
-				<ion-datetime class="input_form" display-format="MMM DD, YYYY HH:mm" [(ngModel)]="taskdata.due_date" formControlName="due_date" min="{{due_date}}"></ion-datetime>
-			</ion-item>-->
-			<ion-item style="margin: 7px 0 7px;" class="input_item">
-				<ion-label class="input_label" color="inputcolor" style="font-family: quicksandsR!important;"><img style="max-width: 17px; position: absolute; left: 0;" src="../../assets/imgs/inputclndr.svg"/> Due Date</ion-label>
-				<ion-datetime class="input_form" displayFormat="D MMM YYYY H:mm"  [(ngModel)]="taskdata.due_date" formControlName="due_date" min="{{due_date}}"></ion-datetime>
-			</ion-item>
-			<!--<ion-item>
-			  <ion-label>D MMM YYYY H:mm</ion-label>
-			  <ion-datetime displayFormat="D MMM YYYY H:mm" min="1997" max="2010" value="2005-06-17T11:06Z"></ion-datetime>
-			</ion-item>-->
 
-				<p class="add_sub_task">Need to add some related sub task?</p>
-			<ion-item class="input_item" *ngFor="let att of subtaskArray; let idx = index">
-				<!-- <ion-label style="padding-left: 0;" class="input_label" color="inputcolor" floating>Add sub Task</ion-label> -->
-				<!-- <ion-input class="input_form"></ion-input> -->
-				<ion-label color="primary" item-start>{{att.label}}{{idx+1}}</ion-label>
-				<ion-input type="text" text-left [(ngModel)]="subtaskArray[idx].value" formControlName="sub_task{{idx+1}}" placeholder="Enter sub task"></ion-input>
-				<div ion-button item-end style="margin: 14px 0 0; background: #db2d04; color: #ffffff;" clear (click)="remaovesubTask(att.sub_task)"><ion-icon name="remove"></ion-icon></div>
+			<ion-item style="margin: 7px 0 7px;" class="input_item">
+				<ion-label class="input_label" color="inputcolor" style="font-family: quicksandsR!important;"><img
+						style="max-width: 17px; position: absolute; left: 0;" src="../../assets/imgs/inputclndr.svg" />
+					Due Date</ion-label>
+				<ion-datetime class="input_form" displayFormat="D MMM YYYY H:mm" [(ngModel)]="taskdata.due_date"
+					formControlName="due_date" min="{{due_date}}"></ion-datetime>
 			</ion-item>
-			<!-- <ion-item>
-			<button ion-button style="margin: 14px 0 0; background: #73a82f; color: #ffffff;" clear (click)="AddsubTask()">
-				<ion-icon name="add"></ion-icon>
-			</button>
-			</ion-item> -->
+
+
+			<p class="add_sub_task">Need to add some related sub task?</p>
+			<ion-item class="input_item" *ngFor="let att of subtaskArray; let idx = index">
+
+				<ion-label color="primary" item-start>{{att.label}}{{idx+1}}</ion-label>
+				<ion-input type="text" text-left [(ngModel)]="subtaskArray[idx].value"
+					formControlName="sub_task{{idx+1}}" placeholder="Enter sub task"></ion-input>
+				<div ion-button item-end style="margin: 14px 0 0; background: #db2d04; color: #ffffff;" clear
+					(click)="remaovesubTask(att.sub_task)">
+					<ion-icon name="remove"></ion-icon>
+				</div>
+			</ion-item>
+
 			<ion-grid>
 				<ion-row>
 					<ion-col col-6>
-						<div ion-button style="margin: 14px 0 0; background: #73a82f; color: #ffffff;" clear (click)="AddsubTask()"><ion-icon name="add"></ion-icon></div>
+						<div ion-button style="margin: 14px 0 0; background: #73a82f; color: #ffffff;" clear
+							(click)="AddsubTask()">
+							<ion-icon name="add"></ion-icon>
+						</div>
 					</ion-col>
 				</ion-row>
 			</ion-grid>
@@ -141,6 +136,3 @@
 		<button ion-button block class="save_btn" [disabled]="newTaskform.invalid">Save</button>
 	</form>
 </ion-content>
-<!--<ion-footer class="footer_section">
-    <p class="footer_content">Orga-nice 2019 all Rights Reserve</p>
-</ion-footer>-->

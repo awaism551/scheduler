@@ -51,7 +51,7 @@ export class LoginPage {
 
 	sentotplogin() {
 
-		debugger;
+		// debugger;
 		console.log('sentotp');
 		var data = this.loginform.value;
 		//console.log(data);
@@ -108,7 +108,7 @@ export class LoginPage {
 
 	login() {
 
-		debugger;
+		// debugger;
 		this.navCtrl.setRoot(HomePage);
 
 		if (this.loginform.valid) {

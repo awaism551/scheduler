@@ -249,7 +249,7 @@ export class MyApp {
    }  */
 	openPage(page) {
 
-		debugger;
+		// debugger;
 		// this.nav.push(page.component)
 		// console.log(page);
 		// console.log(page.component.name);

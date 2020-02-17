@@ -33,13 +33,24 @@ export class WeeklycalenderPage implements OnInit {
 
 	@ViewChild("scheduler_here") schedulerContainer: ElementRef;
 	constructor(public loadingCtrl: LoadingController, public global: GlobalProvider, public navCtrl: NavController, public navParams: NavParams, public popoverCtrl: PopoverController, private storage: Storage, public http: Http, private toastCtrl: ToastController) {
-		debugger;
+		// // debugger;
 		this.urlGet = global.url;
+	}
+
+	ionViewWillLeave() {
+		// debugger;
+		console.log('Looks like I’m about to leave');
+		let eventId = scheduler.getState().lightbox_id;
+		if (eventId) {
+			// scheduler.cancel_lightbox();
+			scheduler.endLightbox(eventId);
+			console.log('opened');
+		}
 	}
 
 	ionViewDidLoad() {
 
-		debugger;
+		// debugger;
 		this.storage.get("userdetails").then((userval) => {
 			console.log('User details is', userval);
 			this.UserDetails = userval;
@@ -54,7 +65,7 @@ export class WeeklycalenderPage implements OnInit {
 
 	//popover cntrl
 	presentPopover(myEvent) {
-		debugger;
+		// debugger;
 		let popover = this.popoverCtrl.create(PopoverComponent);
 		popover.present({
 			ev: myEvent
@@ -82,7 +93,7 @@ export class WeeklycalenderPage implements OnInit {
 
 	get_user_tasks() {
 
-		debugger;
+		// debugger;
 
 		this.showLoading();
 
@@ -98,15 +109,19 @@ export class WeeklycalenderPage implements OnInit {
 
 
 		scheduler.attachEvent('onEventAdded', (id, ev) => {
+			// debugger;
 			console.log('event added ', ev);
+			console.log('event id ', id);
 		});
 
 		scheduler.attachEvent("onEventDropOut", function (id, original, to, e) {
+			// debugger;
 			console.log(`onEventDropOut fired`);
 		});
 
-
 		scheduler.attachEvent('onEventChanged', (id, ev) => {
+
+			// debugger;
 			console.log('event changed ', ev);
 			var start_date = this.convert(ev.start_date);
 			var end_date = this.convert(ev.end_date);
@@ -153,6 +168,8 @@ export class WeeklycalenderPage implements OnInit {
 		});
 
 		scheduler.attachEvent('onEventDeleted', (id) => {
+
+			// debugger;
 			//this.eventService.remove(id);
 			console.log(id);
 			let taskdata = {
@@ -203,7 +220,7 @@ export class WeeklycalenderPage implements OnInit {
 			.subscribe(
 				(data) => {
 
-					debugger;
+					// debugger;
 					let taskList = JSON.parse(data["_body"]);
 
 					this.allTasks.push(taskList.all_tasks);
@@ -218,12 +235,11 @@ export class WeeklycalenderPage implements OnInit {
 				});
 
 		this.get_user_unassigntasks();
-
 	}
 
 	get_user_unassigntasks() {
 
-		debugger;
+		// debugger;
 		console.log(this.urlGet);
 
 		let _url: string = this.urlGet + "api/v1/user/get_user_task_unassign";
@@ -250,7 +266,7 @@ export class WeeklycalenderPage implements OnInit {
 
 	private convert(str) {
 
-		debugger;
+		// debugger;
 		var date = new Date(str),
 			mnth = ("0" + (date.getMonth() + 1)).slice(-2),
 			day = ("0" + date.getDate()).slice(-2);
