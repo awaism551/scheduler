@@ -65,11 +65,13 @@ export class LoginPage {
 		loading.present();
 		//let _url: string = "http://ec2-52-59-226-149.eu-central-1.compute.amazonaws.com/api/v1/user/register";
 		let _url: string = "http://ec2-52-59-226-149.eu-central-1.compute.amazonaws.com/api/v1/user/logotp";
+		console.log(JSON.stringify(this.headers));
 		this.http.post(_url, regdata, { headers: this.headers })
 			.subscribe(
 				(data) => {
+					console.log(data);
+					console.log(JSON.stringify(data));
 					let result = JSON.parse(data["_body"]);
-
 					loading.dismiss();
 					loading.onDidDismiss(() => {
 						let toast = this.toastCtrl.create({
@@ -108,47 +110,14 @@ export class LoginPage {
 
 	login() {
 
-		// debugger;
+		debugger;
 		this.navCtrl.setRoot(HomePage);
 
 		if (this.loginform.valid) {
 			let data = this.loginform.value;
 
-			// j comments
-			/* this.fcm.getToken()
-			  this.fcm.receive.subscribe(() => {
-				console.log("token ", this.fcm.device_token);
-			  })
-			  this.fcm.listenToNotifications().pipe(
-				 tap(msg => {
-				  //show toast in app
-				 })
-			  )
-			  .subscribe();
-	   		*/
-			/* this.fcm.getToken().then(token => {
-				alert('token id: ' + token);      
-			  }) */
-			//console.log(this.fcm.getToken());
-			/* let token;
-			this.fcm.subscribeToTopic('all');
-		   this.fcm.getToken().then(token=>{
-			   console.log(token);
-		   })
-		   this.fcm.onNotification().subscribe(data=>{
-			 if(data.wasTapped){
-			   console.log("Received in background");
-			 } else {
-			   console.log("Received in foreground");
-			 };
-		   })
-		   this.fcm.onTokenRefresh().subscribe(token=>{
-			 console.log(token);
-		   }); */
-
 			let logindata = {
 				"email": data.email,
-				//"password":data.password,
 				"devicetoken": 'sam',
 				"otp": data.otp
 			};
@@ -158,7 +127,8 @@ export class LoginPage {
 			this.http.post(_url, logindata, { headers: this.headers })
 				.subscribe(
 					(data) => {
-
+						console.log(data);
+						console.log(JSON.stringify(data));
 						let result = JSON.parse(data["_body"]);
 						if (result.status == "failed") {
 							let loading = this.loadingCtrl.create({
@@ -202,8 +172,6 @@ export class LoginPage {
 									if (result.message == "You are successfully logged in.") {
 
 										this.loginform.reset();
-										//this.navCtrl.setRoot(HomePage);
-										//window.location.reload();
 										this.storage.ready().then(() => {
 											this.storage.set(this.userDetails, result).then(() => {
 												this.storage.get('userdetails').then((value) => {
@@ -214,28 +182,26 @@ export class LoginPage {
 													}
 													else {
 														this.navCtrl.setRoot(HomePage);
-														//this.navCtrl.setRoot(ProfilePage);
-
 													}
 												});
 
 											});
 										});
 									}
-									else {
-										// fake login for browser, bcz on browser apis are working fine but otp not receiving on mail
-										this.fakeLogin();
-									}
+									// else {
+									// 	// fake login for browser, bcz on browser apis are working fine but otp not receiving on mail
+									// 	this.fakeLogin();
+									// }
 
 								});
 								toast.present();
 							});
 						}
 					}
-					, (err) => {
-						// fake login for android, bcz for now api is not working for android
-						this.fakeLogin();
-					}
+					// , (err) => {
+					// 	// fake login for android, bcz for now api is not working for android
+					// 	this.fakeLogin();
+					// }
 				);
 		}
 	}

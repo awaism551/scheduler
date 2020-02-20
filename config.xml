@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="io.ionic.starter" version="0.0.4" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="io.ionic.starter" version="0.0.5" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Orga-Nice</name>
     <description>An awesome Ionic/Cordova app.</description>
     <author email="hi@ionicframework.com" href="http://ionicframework.com/">Ionic Framework Team</author>
-    <content src="index.html" />
+    <content original-src="index.html" src="http://localhost:8100" />
     <access origin="*" />
     <allow-navigation href="*" />
     <allow-intent href="http://*/*" />
@@ -115,5 +115,4 @@
     <plugin name="cordova-plugin-network-information" spec="^2.0.2" />
     <plugin name="cordova-sqlite-storage" spec="^3.4.1" />
     <allow-navigation href="http://localhost:8101" sessionid="18f105ef" />
-    <allow-navigation href="http://localhost:8102" sessionid="00227c66" />
 </widget>
