@@ -1,9 +1,3 @@
-<!--
-  Generated template for the TasksPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
 	<ion-navbar class="header_font" color="primary">
 		<ion-title>Tasks</ion-title>
@@ -279,7 +273,7 @@
 				</div>
 			</ion-row>
 			<div *ngIf="filterData.high">
-				<div class="tab" *ngFor="let item of filterData.h; let i = index">
+				<div class="tab" *ngFor="let item of filterData.high; let i = index">
 					<div class="tab">
 						<input type="checkbox" id="chckd{{i}}">
 						<label class="tab-label" for="chckd{{i}}">{{item.name}}</label>
@@ -880,6 +874,3 @@
 	</div>
 
 </ion-content>
-<!-- <ion-footer class="footer_section">
-    <p class="footer_content">Orga-nice 2019 all Rights Reserve</p>
-</ion-footer> -->

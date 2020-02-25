@@ -341,11 +341,12 @@ export class TasksPage {
 	}
 
 	sortByFunction() {
+		debugger;
 		console.log(this.taskdata.sortBy);
 
 		console.log(this.allTasks)
 		if (this.allTasks.length > 0) {
-			console.log('this.allTasks')
+			console.log('this.allTasks');
 			if (this.taskdata.sortBy == 'frequency') {
 				this.frequency = true;
 				this.filterData = this.allTasks[0];
