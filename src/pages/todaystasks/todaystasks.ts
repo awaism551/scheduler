@@ -48,7 +48,7 @@ export class TodaystasksPage {
 
 		debugger;
 		loading.present();
-		let _url: string = this.urlGet + "api/v1/user/get_user_task";
+		let _url: string = this.urlGet + "api/v1/user/get_user_todaystask";
 		let postdata = {
 			'user_id': this.UserDetails['userdetails'].id
 		}

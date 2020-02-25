@@ -54,7 +54,7 @@ export class NewtaskPage {
 	}
 	//get user category
 	get_user_categories() {
-		let _url: string = "http://ec2-52-59-226-149.eu-central-1.compute.amazonaws.com/api/v1/user/user_category";
+		let _url: string = "http://orga-nice-app.com/api/v1/user/user_category";
 		let postdata = {
 			'user_id': this.UserDetails['userdetails'].id
 		}
@@ -123,7 +123,7 @@ export class NewtaskPage {
 					'type': 'task'
 				}
 				console.log(taskdata);
-				let _url: string = "http://ec2-52-59-226-149.eu-central-1.compute.amazonaws.com/api/v1/user/create_task";
+				let _url: string = "http://orga-nice-app.com/api/v1/user/create_task";
 				this.http.post(_url, taskdata, { headers: this.headers })
 					.subscribe(
 						(data) => {
@@ -168,7 +168,7 @@ export class NewtaskPage {
 					'due_date': data.due_date,
 					'type': 'task'
 				}
-				let _url: string = "http://ec2-52-59-226-149.eu-central-1.compute.amazonaws.com/api/v1/user/create_task";
+				let _url: string = "http://orga-nice-app.com/api/v1/user/create_task";
 				this.http.post(_url, taskdata, { headers: this.headers })
 					.subscribe(
 						(data) => {

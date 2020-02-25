@@ -10,16 +10,9 @@ import { RegisterPage } from '../register/register';
 import { ProfilePage } from '../profile/profile';
 import { ForgotpasswordPage } from '../forgotpassword/forgotpassword';
 import { HomePage } from '../home/home';
-//import { ProfilePage } from '../pages/profile/profile';
 import { FCM } from '@ionic-native/fcm';
-//import { FCM } from '@ionic-native/fcm';
 import { Platform } from 'ionic-angular';
-/**
- * Generated class for the LoginPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+
 
 @Component({
 	selector: 'page-login',
@@ -31,9 +24,7 @@ export class LoginPage {
 	public hideregister = false;
 	public hideotplogin = false;
 
-
 	loginform: FormGroup;
-	//loginData = { "email": "", "password": "","devicetoken":""};
 	loginData = { "email": "", "devicetoken": "", "otp": "" };
 	public userDetails: string = "userdetails";
 	private headers: Headers = new Headers({ 'Content-Type': 'application/json' });
@@ -44,7 +35,6 @@ export class LoginPage {
 		let EMAILPATTERN = /^[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$/i;
 		this.loginform = new FormGroup({
 			email: new FormControl('', [Validators.required, Validators.pattern(EMAILPATTERN)]),
-			//password: new FormControl('', [Validators.required,]),
 			otp: new FormControl('', Validators.required)
 		});
 	}
@@ -63,8 +53,7 @@ export class LoginPage {
 		});
 
 		loading.present();
-		//let _url: string = "http://ec2-52-59-226-149.eu-central-1.compute.amazonaws.com/api/v1/user/register";
-		let _url: string = "http://ec2-52-59-226-149.eu-central-1.compute.amazonaws.com/api/v1/user/logotp";
+		let _url: string = "http://orga-nice-app.com/api/v1/user/logotp";
 		console.log(JSON.stringify(this.headers));
 		this.http.post(_url, regdata, { headers: this.headers })
 			.subscribe(
@@ -123,7 +112,7 @@ export class LoginPage {
 			};
 
 			// verifying that enter otp is correct
-			let _url: string = "http://ec2-52-59-226-149.eu-central-1.compute.amazonaws.com/api/v1/user/login";
+			let _url: string = "http://orga-nice-app.com/api/v1/user/login";
 			this.http.post(_url, logindata, { headers: this.headers })
 				.subscribe(
 					(data) => {

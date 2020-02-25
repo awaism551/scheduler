@@ -13,96 +13,96 @@ import { Storage } from '@ionic/storage';
  */
 
 @Component({
-  selector: 'page-forgotpassword',
-  templateUrl: 'forgotpassword.html',
+	selector: 'page-forgotpassword',
+	templateUrl: 'forgotpassword.html',
 })
 export class ForgotpasswordPage {
 
-  forgotpasswordForm:FormGroup;
-  forgotpasswordData = {'email':''};
-  private headers: Headers = new Headers({ 'Content-Type': 'application/json' });
-  constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http, private toastCtrl: ToastController, public loadingCtrl: LoadingController, public storage: Storage) {
-  }
+	forgotpasswordForm: FormGroup;
+	forgotpasswordData = { 'email': '' };
+	private headers: Headers = new Headers({ 'Content-Type': 'application/json' });
+	constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http, private toastCtrl: ToastController, public loadingCtrl: LoadingController, public storage: Storage) {
+	}
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ForgotpasswordPage');
-  }
+	ionViewDidLoad() {
+		console.log('ionViewDidLoad ForgotpasswordPage');
+	}
 
-  ngOnInit() {
-    let EMAILPATTERN = /^[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$/i;
-    this.forgotpasswordForm = new FormGroup({
-      email: new FormControl('', [Validators.required, Validators.pattern(EMAILPATTERN)])
-    });
-  }
+	ngOnInit() {
+		let EMAILPATTERN = /^[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$/i;
+		this.forgotpasswordForm = new FormGroup({
+			email: new FormControl('', [Validators.required, Validators.pattern(EMAILPATTERN)])
+		});
+	}
 
 
-  gosetpassword(){
-    this.navCtrl.push(SetpasswordPage);
-  }
-  
-  forgotpassword(){
-    if (this.forgotpasswordForm.valid) {
-      var data = this.forgotpasswordForm.value;
-      var forgot_password_data = {
-        'email': data.email
-      };
+	gosetpassword() {
+		this.navCtrl.push(SetpasswordPage);
+	}
 
-      let _url: string = "http://ec2-52-59-226-149.eu-central-1.compute.amazonaws.com/api/v1/user/forgot_password";
-      this.http.post(_url, forgot_password_data, { headers: this.headers })
-        .subscribe(
-          (data) => {
-            let result = JSON.parse(data["_body"]);
-            //console.log(result);
-            if (result.status == "failed") {
+	forgotpassword() {
+		if (this.forgotpasswordForm.valid) {
+			var data = this.forgotpasswordForm.value;
+			var forgot_password_data = {
+				'email': data.email
+			};
 
-              let loading = this.loadingCtrl.create({
-                content: 'Please wait...',
-                duration: 4000
-              });
+			let _url: string = "http://orga-nice-app.com/api/v1/user/forgot_password";
+			this.http.post(_url, forgot_password_data, { headers: this.headers })
+				.subscribe(
+					(data) => {
+						let result = JSON.parse(data["_body"]);
+						//console.log(result);
+						if (result.status == "failed") {
 
-              loading.present();
-              loading.onDidDismiss(() => {
-                let toast = this.toastCtrl.create({
-                  message: result.message,
-                  duration: 3000,
-                  position: 'top',
-                  cssClass: "customtoast",
-                });
-                toast.onDidDismiss(() => {
-                  console.log('Dismissed toast');
-                });
-                toast.present();
-              });
-            } else {
-              let userdata = {
-                'email': result.user_email,
-                'user_otp': result.otp
-              }
-              this.storage.set('user_data', userdata);
-              let loading = this.loadingCtrl.create({
-                content: 'Please wait...',
-                duration: 4000
-              });
+							let loading = this.loadingCtrl.create({
+								content: 'Please wait...',
+								duration: 4000
+							});
 
-              loading.present();
-              loading.onDidDismiss(() => {
-                let toast = this.toastCtrl.create({
-                  message: result.message,
-                  duration: 3000,
-                  position: 'top',
-                  cssClass: "customtoast",
-                });
+							loading.present();
+							loading.onDidDismiss(() => {
+								let toast = this.toastCtrl.create({
+									message: result.message,
+									duration: 3000,
+									position: 'top',
+									cssClass: "customtoast",
+								});
+								toast.onDidDismiss(() => {
+									console.log('Dismissed toast');
+								});
+								toast.present();
+							});
+						} else {
+							let userdata = {
+								'email': result.user_email,
+								'user_otp': result.otp
+							}
+							this.storage.set('user_data', userdata);
+							let loading = this.loadingCtrl.create({
+								content: 'Please wait...',
+								duration: 4000
+							});
 
-                toast.onDidDismiss(() => {
-                  console.log('Log in toast');
-                  //console.log(result);
-                  this.navCtrl.push(SetpasswordPage);
-                });
-                toast.present();
-              });
-            }
-          });
+							loading.present();
+							loading.onDidDismiss(() => {
+								let toast = this.toastCtrl.create({
+									message: result.message,
+									duration: 3000,
+									position: 'top',
+									cssClass: "customtoast",
+								});
 
-    }
-  }
+								toast.onDidDismiss(() => {
+									console.log('Log in toast');
+									//console.log(result);
+									this.navCtrl.push(SetpasswordPage);
+								});
+								toast.present();
+							});
+						}
+					});
+
+		}
+	}
 }
