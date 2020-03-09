@@ -577,7 +577,7 @@
 				</div>
 			</ion-row>
 			<div *ngIf="filterData.green">
-				<div class="tab" *ngFor="let item of filterData.g; let i = index">
+				<div class="tab" *ngFor="let item of filterData.green; let i = index">
 					<div class="tab">
 						<input type="checkbox" id="chckw{{i}}">
 						<label class="tab-label" for="chckw{{i}}">{{item.name}}</label>
@@ -726,8 +726,8 @@
 
 				<div class="tab" *ngFor="let item of filterData.black; let i = index">
 					<div class="tab">
-						<input type="checkbox" id="chckm{{i}}">
-						<label class="tab-label" for="chckm{{i}}">{{item.name}}</label>
+						<input type="checkbox" id="chckblack{{i}}">
+						<label class="tab-label" for="chckblack{{i}}">{{item.name}}</label>
 						<div class="tab-content">
 							<ion-list style="width: 100%;">
 								<ion-row>
@@ -802,8 +802,8 @@
 			<div *ngIf="filterData[cat.category_name]">
 				<div class="tab" *ngFor="let item of filterData[cat.category_name]; let i = index">
 					<div class="tab">
-						<input type="checkbox" id="chckd{{i}}">
-						<label class="tab-label" for="chckd{{i}}">{{item.name}}</label>
+						<input type="checkbox" id="chckCategory{{item.id}}">
+						<label class="tab-label" for="chckCategory{{item.id}}">{{item.name}}</label>
 						<div class="tab-content">
 							<ion-list style="width: 100%;">
 								<ion-row>

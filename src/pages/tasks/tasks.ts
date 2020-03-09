@@ -397,6 +397,7 @@ export class TasksPage {
 			}
 
 			if (this.taskdata.sortBy == 'category') {
+				debugger;
 				this.category = true;
 				this.filterData = [];
 				let catNames = [];
@@ -422,6 +423,9 @@ export class TasksPage {
 						}
 					});
 				});
+				debugger;
+				console.log(this.filterData);
+				console.log(this.allCats);
 			} else {
 				this.category = false;
 			}
